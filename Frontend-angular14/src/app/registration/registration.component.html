@@ -1,0 +1,25 @@
+<div class="container login border rounded p-5 m-4">
+    <form class="row"  [formGroup]="registerForm" (ngSubmit)="registerUser()">
+        <div class="col-md-6">
+            <h2 class="pb-3">Register</h2>
+            
+            
+            <label for="firstName" class="pb-2">First Name</label>
+            <input formControlName="firstName"  type="text" class="form-control ml-2"   placeholder="Enter your first name">
+           
+            <label for="lastName" class="pb-2">Last Name</label>
+            <input formControlName="lastName" type="text"  class="form-control ml-2"   placeholder="Enter your last name">
+            <label for="email" class="pb-2">Email</label>
+            <input formControlName="email" type="email" class="form-control ml-2"  placeholder="Enter your email address">
+            <br>
+            <button type="submit"  class="btn mb-2 btn-primary">
+                <i class="fas fa-spinner"></i> Sign Up
+            </button>
+            <span class="mx-3 text-secondary"><br></span> Already a member? <a routerLink="/login">Login Here</a>.
+        </div>
+
+        <div class="col-md-6 my-auto">
+            <img src="../../assets/images/signup.svg" width="100%">
+        </div>
+    </form>
+</div>

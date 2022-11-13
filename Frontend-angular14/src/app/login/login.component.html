@@ -1,0 +1,16 @@
+<div class="container login border rounded p-5 m-4">
+    <form [formGroup]="loginForm"  class="row" (ngSubmit)="myLoginMethod()">
+        <div class="col-md-6 d-flex justify-center flex-column">
+            <h2 class="pb-3 card-title">Login</h2>
+            <label for="email" class="pb-2" >Email</label>
+            <input formControlName="email"  type="email" class="form-control" class="form-control ml-2" placeholder="Enter your email address">
+                                
+            <br>
+            <input type="submit" value="Login" class="btn btn-primary btn-sm btn-def mb-3">
+            <span class="mx-3 text-secondary"></span>  Not yet a member? <a routerLink="/registration">Register Here</a>.
+        </div>
+        <div class="col-md-6 my-auto">
+            <img src="../../assets/images/welcome.svg" width="100%" >
+        </div>
+    </form>
+</div>

@@ -1,0 +1,75 @@
+<div id="chats">
+    <div class="row chatbox">
+      <div class="col-sm-3 user-list p-0">
+        <div class="chat-header">
+          <span>Hello, {{(loggedUserName)? loggedUserName : ''}}</span>
+          <span class="logout-btn" (click)="logOutUser()">
+            <img src="../../assets/images/power.svg" alt="Logout" width="100%">
+          </span>
+        </div>
+        <h5 class="px-3 m-2">Conversations</h5>
+        <hr class="m-0" />
+        <div class="user-container" *ngFor="let user of this.chatUsers" [ngClass]="{selected: this.chatService.ReceiverId== user.usersId}">
+          <div class="user" [attr.name]="user.firstName.charAt(0)">
+            <div class="user-name" (click)="setReceiverDataToBrowser(user)" >
+              {{user.firstName}}
+            </div>
+          </div>
+        </div>
+        
+  
+      </div>
+      
+      <div class="col-sm-6 chats p-0">
+       
+        <div class="chat-navbar p-4">
+          <h3 class="m-0">{{this.chatService.ReceiverName}}</h3>
+          <div >
+            <img src="../../assets/images/chat-user.svg" alt="chat user" width="20px">
+          </div>
+        </div>
+        
+        <!-- <div class="messages" *ngFor="let msg of this.mergedAndSortedMessage" >
+            <ng-container  *ngIf="msg.SenderId == this.SenderId; then mySentMsg else othersSentMsg"></ng-container>
+            <ng-template  #mySentMsg > 
+                <div class="sent" (click)="deleteMessage(msg.msgId)">
+                    {{msg.text}}                              
+                </div>                       
+            </ng-template>
+            <ng-template   #othersSentMsg> 
+                <div class="received" (click)="deleteMessage(msg.msgId)">
+                    {{msg.text}}                              
+                </div>                       
+            </ng-template>
+        </div> -->
+        <div class="messages">
+          <div *ngFor="let message of this.mergedAndSortedMessage" [ngClass]="{ 'msg-sent': message.senderId == this.SenderId, 'msg-rece': message.senderId != this.SenderId}">
+            <div [ngClass]="{sent: message.senderId == this.SenderId, received: message.senderId != this.SenderId}"  (click)="deleteMessage(message.msgId)"               
+            >
+              {{message.text}}
+            </div>
+
+          </div>
+        </div>
+        
+        <form [formGroup]="sendMsgForm" class="sendbox" (ngSubmit)="sendMessage()">
+          <input type="text" formControlName="text" placeholder="Enter your Message"  />
+          <button class="send-btn" type="submit" >
+            Send
+          </button>
+        </form>
+      </div>
+      
+      <div class="col-sm-3 pt-3 user-part p-0">
+        <h5 class="mx-3">Available Users</h5>
+        <hr class="m-0" />
+        <div class="all-users"  >
+          <div class="chat-user" *ngFor="let user of this.chatService.usersInfo" 
+           (click)="setReceiverDataToBrowser(user)" >
+            {{ user.firstName }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
