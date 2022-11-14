@@ -1,16 +1,21 @@
 # Real-Time-Chat-App
+
 Database Schema
 ----------------
 <b>UsersInfo</b> <br>
+
 ↳ Id : int <br>
 ↳ Email : string <br>
 ↳ FirstName : string <br>
 ↳ LastName : string <br>
+
 <b>MessageInfo</b> <br>
+
 ↳ Id : int <br>
 ↳ text: string <br>
 ↳ SenderId : int <br>
 ↳ ReceiverId : int <br>
+
 Backend
 ----------
 <b>Prerequisite:</b> 
